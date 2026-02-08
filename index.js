@@ -132,6 +132,12 @@ function startQuiz(){
     incrementQuestion();
 }
 
+// function to reveal the game and then hide it again after 5 minutes
+function startGame(){
+    document.getElementById("gameWindow").classList.remove("hidden");
+    setTimeout(document.getElementById("gameWindow").classList.add("hidden"), 5000);
+}
+
 
 // start of program
 document.getElementById("introHeading").innerText = "Welcome to the reading app!";
