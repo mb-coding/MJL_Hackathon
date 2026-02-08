@@ -16,4 +16,5 @@ let iSurvivedParagraph4 = "This is the fourth paragraph of the book.";
 let iSurvivedParagraph5 = "This is the fifth paragraph of the book.";
 
 document.getElementById("heading").innerText = "Welcome to the reading app!";
+document.getElementById("heading2").innerText = "What book would you like to read today?"
 document.getElementById("paragraph").innerText = iSurvivedParagraph1;
