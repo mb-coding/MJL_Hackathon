@@ -5,6 +5,7 @@ let iSurvivedQuestionsParagraph3 = ["question 1", "question 2", "question 3", "q
 let iSurvivedQuestionsParagraph4 = ["question 1", "question 2", "question 3", "question 4"];
 let iSurvivedQuestionsParagraph5 = ["question 1", "question 2", "question 3", "question 4"];
 let allISurvivedQuestions = [...iSurvivedQuestionsParagraph1,...iSurvivedQuestionsParagraph2,...iSurvivedQuestionsParagraph3,...iSurvivedQuestionsParagraph4,...iSurvivedQuestionsParagraph5];
+
 // lists of answers
 let iSurvivedAnswersParagraph1 = ["answer 1", "answer 2", "answer 3", "answer 4"];
 let iSurvivedAnswersParagraph2 = ["answer 1", "answer 2", "answer 3", "answer 4"];
@@ -44,6 +45,7 @@ function promptParagraphNum(){
     document.getElementById("numParagraphsHeading2").innerText = "How many paragraphs would you like to read?";
 }
 
+// function to read the number of paragraphs the user wants to read
 function readInput(){
     // console.log(document.getElementById("numParagraphsText").value);
     let text = document.getElementById("numParagraphsText").value
@@ -68,6 +70,7 @@ function readInput(){
     }
 }
 
+// function to set up the screen to show each paragraph
 function setupToShowParagraphs(){
     document.getElementById("numParagraphsHeading2").classList.add("hidden");
     document.getElementById("numParagraphsButton").classList.add("hidden");
@@ -77,6 +80,7 @@ function setupToShowParagraphs(){
     increment();
 }
 
+// function to show each paragraph
 function showParagraphs(updatedFinishedParagraphs){
     // console.log(selectedNumOfParagraphs);
     if(updatedFinishedParagraphs < selectedNumOfParagraphs){
@@ -88,17 +92,17 @@ function showParagraphs(updatedFinishedParagraphs){
     }
 }
 
+// function to increment the current paragraph
 function increment(){
     finishedParagraphs+=1;
     showParagraphs(finishedParagraphs);
 }
 
+// function to begin quiz
 function startQuiz(){
-    
+
 }
 
 // start of program
 document.getElementById("introHeading").innerText = "Welcome to the reading app!";
 document.getElementById("introHeading2").innerText = "What book would you like to read today?";
-
-
