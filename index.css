@@ -1,5 +1,22 @@
-#heading {
-    display: block;
+#introHeading {
     text-align: center;
-    /* color = "blue"; */
+    font-size: 10vh;
+    color: blue;
+}
+
+#introHeading2 {
+    text-align: center;
+}
+
+#mainParagraph {
+    text-align: center;
+}
+
+
+#introButton {
+    width: 200px;
+    height: 50px;
+    background-color: yellow;
+    /* text-align: center; */
+    /* align-items: center; */
 }
