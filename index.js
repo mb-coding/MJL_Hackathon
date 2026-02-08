@@ -128,9 +128,15 @@ function showNumOfCorrectAnswers(){
     document.getElementById("submitButton").classList.add("hidden");
 }
 
+function showReminder() {
+    document.getElementById("finishButton").classList.add("hidden");
+    document.getElementById("mainParagraph").classList.add("hidden");
+    document.getElementById("startQuiz").classList.remove("hidden");
+}
+
 // function to begin quiz
 function startQuiz(){
-    document.getElementById("questionsContainer").classList.remove("hidden");
+    document.getElementById("startQuiz").classList.add("hidden");
     document.getElementById("finishButton").classList.add("hidden");
     document.getElementById("mainParagraph").classList.add("hidden");
     document.getElementById("question").classList.remove("hidden");
