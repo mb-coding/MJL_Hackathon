@@ -16,7 +16,7 @@ let allISurvivedAnswers = [...iSurvivedAnswersParagraph1,...iSurvivedAnswersPara
 
 
 // lists of paragraphs
-const iSurvivedParagraph1 = "This is the first paragraph of the book.";
+const iSurvivedParagraph1 = "Josh stared in horror at the blood-red glow rising up behind him. A massive wildfire was raging through the forest, a wall of flames devouring everything in its path. Josh and his cousin Holly were in a race for their lives.\n\t'Josh!' Holly shouted, grabbing his hand.\n'This way!`\n\tAs they took off along the forest path, the hot wind gusted hard. Suddenly,the air was filled with sparks and glowing embers and chunks of flaming wood. Josh felt them landing on his bare arms and legs, sizzling against his skin like the white-hot teeth of a flesh-eating monster.\n\tHe and Holly ran faster, but the wall of flames was closing in from behind. And all around them, the burning embers were setting fires wherever they landed.";
 const iSurvivedParagraph2 = "This is the second paragraph of the book.";
 const iSurvivedParagraph3 = "This is the third paragraph of the book.";
 const iSurvivedParagraph4 = "This is the fourth paragraph of the book.";

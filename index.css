@@ -11,45 +11,76 @@
 #introHeading {
     text-align: center;
     font-size: 10vh;
-    color: blue;
+    color: #4e2d24;
+    font-family: "Garamond", serif;
+    font-weight: bolder;
 }
 
 #introHeading2 {
     text-align: center;
+    color: #714635;
+
 }
 
 #introButton {
-    width: 200px;
-    height: 50px;
-    background-color: yellow;
+    width: 350px;
+    height: 75px;
+    background-color: #ffedc5;
+    border-color: #efd7a4;
+    cursor: pointer;
+    font-family: "Georgia", serif;
+    color: #33191a;
+    font-size:larger;
 }
 
 #numParagraphsHeading2 {
     text-align: center;
+    font-family: "Garamond", serif;
+    font-size: 5vh;
+    color: 	#663300;
 }
 
 #numParagraphsText {
-    text-align: center;
+    text-align: right;
+    width: 200p;
 }
 
 #numParagraphsButton {
+    text-align: center;
     width: 200px;
     height: 50px;
-    background-color: yellow;
+    color: #5c332d;
+    background-color: #f9c1c0;
+    border-color:#eba27d;
+    cursor: pointer;
 }
 
 #mainParagraph {
     text-align: center;
+    font-size: 4vh;
+    color: 	#240702;
+
 }
 
 #nextButton {
     width: 200px;
     height: 50px;
-    background-color: yellow;
+    color: #5c332d;
+    background-color: #f9c1c0;
+    border-color:#eba27d;
+    cursor: pointer;
 }
 
 #finishButton {
     width: 200px;
     height: 50px;
-    background-color: yellow;
+    background-color: 	#e53935;
+    border-color: #d32f2f;
+    font-family:"Georgia", serif;
+    color:#33191a;
+    cursor: pointer;
+    font-size: larger;
 }
+body {
+    background-color: 	#dac99d;
+    }
