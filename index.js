@@ -35,6 +35,8 @@ let finishedParagraphs = -1;
 
 let currentQuestion = -1;
 
+let randomList = [0, 1, 2];
+
 // function to clear the screen of all html elements
 function clearIntroScreen(){
     document.getElementById("introHeading").classList.add("hidden");
@@ -106,7 +108,7 @@ function increment(){
 
 function incrementQuestion(){
     currentQuestion+=1;
-    document.getElementById("question").innerText = allISurvivedQuestions[currentQuestion];
+    document.getElementById("question").innerText = allISurvivedQuestions[randomList[currentQuestion]];
 }
 
 // function to begin quiz
@@ -117,7 +119,15 @@ function startQuiz(){
     document.getElementById("questions").classList.remove("hidden");
     document.getElementById("submitButton").classList.remove("hidden");
     if(selectedNumOfParagraphs==3){
+        for(let i=0; i<3; i++){
+            randomList[i] = Math.floor(Math.random()*(5-0+1));
+        }
         allISurvivedQuestions = [...iSurvivedQuestionsParagraph1,...iSurvivedQuestionsParagraph2,...iSurvivedQuestionsParagraph3]
+    }
+    else{
+        for(let i=0; i<3; i++){
+            randomList[i] = Math.floor(Math.random()*(3-0+1));
+        }
     }
     incrementQuestion();
 }
