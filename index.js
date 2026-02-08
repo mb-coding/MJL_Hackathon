@@ -37,6 +37,8 @@ let currentQuestion = -1;
 
 let randomList = [0, 1, 2];
 
+let correctAnswers = 0;
+
 // function to clear the screen of all html elements
 function clearIntroScreen(){
     document.getElementById("introHeading").classList.add("hidden");
@@ -108,11 +110,27 @@ function increment(){
 
 function incrementQuestion(){
     currentQuestion+=1;
+    if(currentQuestion<=2){
     document.getElementById("question").innerText = allISurvivedQuestions[randomList[currentQuestion]];
+    }
+    else{
+        showNumOfCorrectAnswers();
+    }
+}
+
+function showNumOfCorrectAnswers(){
+    document.getElementById("questionsContainer").classList.add("hidden");
+    document.getElementById("questionsCorrectHeader").classList.remove("hidden");
+    document.getElementById("questionsCorrect").classList.remove("hidden");
+    document.getElementById("questionsCorrect").innerText = "You got"+ correctAnswers+"out of 3 questions correct!";
+    document.getElementById("question").classList.add("hidden");
+    document.getElementById("questions").classList.add("hidden");
+    document.getElementById("submitButton").classList.add("hidden");
 }
 
 // function to begin quiz
 function startQuiz(){
+    document.getElementById("questionsContainer").classList.remove("hidden");
     document.getElementById("finishButton").classList.add("hidden");
     document.getElementById("mainParagraph").classList.add("hidden");
     document.getElementById("question").classList.remove("hidden");

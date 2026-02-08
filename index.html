@@ -33,7 +33,7 @@
         <button id = "finishButton" class = "hidden" onclick="startQuiz()">Finish</button>
     </div>
 
-</div>
+<div id = "questionsContainer" class = "hidden">
     <h2 id= "question" class = "hidden"></h2>
     <form id = "questions" class = "hidden">
         <input type="radio" name="choice" value="Option 1"> Option 1
@@ -43,8 +43,9 @@
         <!-- <input type="radio" name="choice" value="Option 4"> Option 4 -->
     </form>
 
+    <button id = "submitButton" class = "hidden" onclick="incrementQuestion()">Submit Answer</button>
+</div>
 <div class="container">
-<button id = "submitButton" class = "hidden" onclick="incrementQuestion()">Submit Answer</button>
 
     <script src = "index.js"></script>
 
@@ -52,5 +53,8 @@
     <div id = "gameWindow" class = "hidden">
 
     </div>
+
+<h2 id = "questionsCorrectHeader" class = "hidden">Results</h2>
+<p id = "questionsCorrect " class = "hidden"></p>
 </body>
 </html>
