@@ -1,10 +1,11 @@
 // lists of questions
-let iSurvivedQuestionsParagraph1 = ["question 1", "question 2", "question 3", "question 4"];
-let iSurvivedQuestionsParagraph2 = ["question 1", "question 2", "question 3", "question 4"];
-let iSurvivedQuestionsParagraph3 = ["question 1", "question 2", "question 3", "question 4"];
+let iSurvivedQuestionsParagraph1 = ["Who was Josh navigating the wildfire with?", "What did the glowing embers and chunks of flaming wood feel like to Josh?"];
+let iSurvivedQuestionsParagraph2 = ["What happened to the tree?", "Where was the tree branch heading?"];
+let iSurvivedQuestionsParagraph3 = ["Where did Josh’s dad work?", "How long did Josh wait for his mom?"];
 // let iSurvivedQuestionsParagraph4 = ["question 1", "question 2", "question 3", "question 4"];
 // let iSurvivedQuestionsParagraph5 = ["question 1", "question 2", "question 3", "question 4"];
-let allISurvivedQuestions = [...iSurvivedQuestionsParagraph1,...iSurvivedQuestionsParagraph2,...iSurvivedQuestionsParagraph3]
+// let allISurvivedQuestions = [...iSurvivedQuestionsParagraph1,...iSurvivedQuestionsParagraph2,...iSurvivedQuestionsParagraph3]
+let allISurvivedQuestions = [...iSurvivedQuestionsParagraph1,...iSurvivedQuestionsParagraph2]
 
 // lists of answers
 let iSurvivedAnswersParagraph1 = ["answer 1", "answer 2", "answer 3", "answer 4"];
@@ -28,6 +29,8 @@ let numOfParagraphs = 5;
 let selectedNumOfParagraphs = 0;
 
 let finishedParagraphs = -1;
+
+let currentQuestion = -1;
 
 // function to clear the screen of all html elements
 function clearIntroScreen(){
@@ -57,12 +60,12 @@ function readInput(){
         else if (text == "3"){
             selectedNumOfParagraphs = 3;
         }
-        else if (text == "4"){
-            selectedNumOfParagraphs = 4;
-        }
-        else if (text == "5"){
-            selectedNumOfParagraphs = 5;
-        }
+        // else if (text == "4"){
+        //     selectedNumOfParagraphs = 4;
+        // }
+        // else if (text == "5"){
+        //     selectedNumOfParagraphs = 5;
+        // }
         setupToShowParagraphs();
     }
     else {
@@ -98,6 +101,11 @@ function increment(){
     showParagraphs(finishedParagraphs);
 }
 
+function incrementQuestion(){
+    currentQuestion+=1;
+    document.getElementById("question").innerText = allISurvivedQuestions[currentQuestion];
+}
+
 // function to begin quiz
 function startQuiz(){
     document.getElementById("finishButton").classList.add("hidden");
@@ -105,6 +113,10 @@ function startQuiz(){
     document.getElementById("question").classList.remove("hidden");
     document.getElementById("questions").classList.remove("hidden");
     document.getElementById("submitButton").classList.remove("hidden");
+    if(selectedNumOfParagraphs==3){
+        allISurvivedQuestions = [...iSurvivedQuestionsParagraph1,...iSurvivedQuestionsParagraph2,...iSurvivedQuestionsParagraph3]
+    }
+    incrementQuestion();
 }
 
 // start of program
