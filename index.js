@@ -8,9 +8,9 @@ let iSurvivedQuestionsParagraph3 = ["Where did Josh’s dad work?", "How long di
 let allISurvivedQuestions = [...iSurvivedQuestionsParagraph1,...iSurvivedQuestionsParagraph2]
 
 // lists of answers
-let iSurvivedAnswersParagraph1 = ["answer 1", "answer 2", "answer 3", "answer 4"];
-let iSurvivedAnswersParagraph2 = ["answer 1", "answer 2", "answer 3", "answer 4"];
-let iSurvivedAnswersParagraph3 = ["answer 1", "answer 2", "answer 3", "answer 4"];
+let iSurvivedAnswersParagraph1 = ["Cousin Holly", "Greg", "Josh`s Mom"];
+let iSurvivedAnswersParagraph2 = ["A flesh eating monster", "A sharped tooth shark", "the claws of a bear"];
+let iSurvivedAnswersParagraph3 = ["It exploded", "It flew away", "Someone crashed into it"]
 // let iSurvivedAnswersParagraph4 = ["answer 1", "answer 2", "answer 3", "answer 4"];
 // let iSurvivedAnswersParagraph5 = ["answer 1", "answer 2", "answer 3", "answer 4"];
 let allISurvivedAnswers = [...iSurvivedAnswersParagraph1,...iSurvivedAnswersParagraph2,...iSurvivedAnswersParagraph3];
