@@ -8,16 +8,22 @@ let iSurvivedQuestionsParagraph3 = ["Where did Josh`s dad work?", "How long did 
 let allISurvivedQuestions = [...iSurvivedQuestionsParagraph1,...iSurvivedQuestionsParagraph2]
 
 // lists of answers
-let iSurvivedAnswersParagraph1Q1 = ["Cousin Holly", "Greg", "Josh`s Mom"];
-let iSurvivedAnswersParagraph1Q2 = ["A flesh eating monster", "A sharped tooth shark", "the claws of a bear"];
+let iSurvivedAnswersParagraph1Q1 = ["Greg", "Josh`s Mom", "Cousin Holly"];
+let iSurvivedAnswersParagraph1Q2 = ["A sharped tooth shark", "A flesh eating monster", "the claws of a bear"];
 let iSurvivedAnswersParagraph2Q1 = ["It exploded", "It flew away", "Someone crashed into it"];
-let iSurvivedAnswersParagraph2Q2 = ["For Josh`s skull", "For Holly`s skull", "For a building"];
+let iSurvivedAnswersParagraph2Q2 = ["For Holly`s skull", "For Josh`s skull", "For a building"];
 let iSurvivedAnswersParagraph3Q1 = ["A big New York City bank", "The NBA", "The Airport"];
-let iSurvivedAnswersParagraph3Q2 = ["Ten minutes", "Five minutes", "Sixty minutes"];
+let iSurvivedAnswersParagraph3Q2 = ["Five minutes", "Sixty minutes", "Ten minutes"];
 // let iSurvivedAnswersParagraph4 = ["answer 1", "answer 2", "answer 3", "answer 4"];
 // let iSurvivedAnswersParagraph5 = ["answer 1", "answer 2", "answer 3", "answer 4"];
-let allISurvivedAnswers = [...iSurvivedAnswersParagraph1Q1,...iSurvivedAnswersParagraph1Q2,...iSurvivedAnswersParagraph2Q1,...iSurvivedAnswersParagraph2Q2];
+let allISurvivedAnswers = [iSurvivedAnswersParagraph1Q1,iSurvivedAnswersParagraph1Q2,iSurvivedAnswersParagraph2Q1];
 
+let iSurvivedAnswersParagraph1Q1Correct = "Cousin Holly"
+let iSurvivedAnswersParagraph1Q2Correct = "A flesh eating monster"
+let iSurvivedAnswersParagraph2Q1Correct = "It exploded"
+let iSurvivedAnswersParagraph2Q2Correct = "For Josh`s skull"
+let iSurvivedAnswersParagraph3Q1Correct = "A big New York City bank"
+let iSurvivedAnswersParagraph3Q2Correct = "10 minutes"
 
 // lists of paragraphs
 const iSurvivedParagraph1 = "Josh stared in horror at the blood-red glow rising up behind him. A massive wildfire was raging through the forest, a wall of flames devouring everything in its path. Josh and his cousin Holly were in a race for their lives.\n\t'Josh!' Holly shouted, grabbing his hand.\n'This way!`\n\tAs they took off along the forest path, the hot wind gusted hard. Suddenly,the air was filled with sparks and glowing embers and chunks of flaming wood. Josh felt them landing on his bare arms and legs, sizzling against his skin like the white-hot teeth of a flesh-eating monster.\n\tHe and Holly ran faster, but the wall of flames was closing in from behind. And all around them, the burning embers were setting fires wherever they landed.";
@@ -112,6 +118,9 @@ function incrementQuestion(){
     currentQuestion+=1;
     if(currentQuestion<=2){
     document.getElementById("question").innerText = allISurvivedQuestions[randomList[currentQuestion]];
+    document.getElementById("labelForOption1").textContent = allISurvivedAnswers[randomList[currentQuestion]][0];
+    document.getElementById("labelForOption2").textContent = allISurvivedAnswers[randomList[currentQuestion]][1];
+    document.getElementById("labelForOption3").textContent = allISurvivedAnswers[randomList[currentQuestion]][2];
     }
     else{
         showNumOfCorrectAnswers();
@@ -122,7 +131,7 @@ function showNumOfCorrectAnswers(){
     document.getElementById("questionsContainer").classList.add("hidden");
     document.getElementById("questionsCorrectHeader").classList.remove("hidden");
     document.getElementById("questionsCorrect").classList.remove("hidden");
-    document.getElementById("questionsCorrect").innerText = "You got"+ correctAnswers+"out of 3 questions correct!";
+    document.getElementById("questionsCorrect").innerText = "You got "+ correctAnswers+" out of 3 questions correct!";
     document.getElementById("question").classList.add("hidden");
     document.getElementById("questions").classList.add("hidden");
     document.getElementById("submitButton").classList.add("hidden");
@@ -146,7 +155,9 @@ function startQuiz(){
         for(let i=0; i<3; i++){
             randomList[i] = Math.floor(Math.random()*(5-0+1));
         }
-        allISurvivedQuestions = [...iSurvivedQuestionsParagraph1,...iSurvivedQuestionsParagraph2,...iSurvivedQuestionsParagraph3]
+        allISurvivedQuestions = [...iSurvivedQuestionsParagraph1,...iSurvivedQuestionsParagraph2,...iSurvivedQuestionsParagraph3];
+        allISurvivedAnswers = [...iSurvivedAnswersParagraph1Q1,...iSurvivedAnswersParagraph1Q2,...iSurvivedAnswersParagraph2Q1,...iSurvivedAnswersParagraph2Q2,...iSurvivedAnswersParagraph3Q1,...iSurvivedAnswersParagraph3Q2];
+
     }
     else{
         for(let i=0; i<3; i++){

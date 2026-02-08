@@ -41,9 +41,12 @@
     </div>
     <h2 id= "question" class = "hidden"></h2>
     <form id = "questions" class = "hidden">
-        <input type="radio" name="choice" value="Option 1"> Option 1
-        <input type="radio" name="choice" value="Option 2"> Option 2
-        <input type="radio" name="choice" value="Option 3"> Option 3
+        <input type="radio" name="choice" id = "Option1" value="Option 1"></input>
+        <label id="labelForOption1" for="Option1">Option 1</label>
+        <input type="radio" name="choice" id = "Option2" value="Option 2"></input>
+        <label id="labelForOption2" for="Option1">Option 2</label>
+        <input type="radio" name="choice" id = "Option3" value="Option 3"></input>
+        <label id="labelForOption3" for="Option1">Option 3</label>
         <!-- <input type="radio" name="choice" value="Option 4"> Option 4 -->
         <!-- <input type="radio" name="choice" value="Option 4"> Option 4 -->
     </form>
@@ -59,6 +62,6 @@
     </div>
 
 <h2 id = "questionsCorrectHeader" class = "hidden">Results</h2>
-<p id = "questionsCorrect " class = "hidden"></p>
+<p id = "questionsCorrect" class = "hidden"></p>
 </body>
 </html>
