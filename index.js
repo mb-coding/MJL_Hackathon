@@ -100,7 +100,11 @@ function increment(){
 
 // function to begin quiz
 function startQuiz(){
-
+    document.getElementById("finishButton").classList.add("hidden");
+    document.getElementById("mainParagraph").classList.add("hidden");
+    document.getElementById("question").classList.remove("hidden");
+    document.getElementById("questions").classList.remove("hidden");
+    document.getElementById("submitButton").classList.remove("hidden");
 }
 
 // start of program
