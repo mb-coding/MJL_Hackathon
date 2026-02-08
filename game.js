@@ -72,6 +72,16 @@
         }
     }
     window['Runner'] = Runner;
+    // Global image cache
+    Runner.imageCache = {
+        seahorse: null
+    };
+    
+    // Preload function
+    Runner.preloadCustomImages = function() {
+        Runner.imageCache.seahorse = new Image();
+        Runner.imageCache.seahorse.src = 'assets/seahorse.png';
+};
 
 
     /**
@@ -352,11 +362,13 @@
          */
         init: function () {
             // Hide the static icon.
-            document.querySelector('.' + Runner.classes.ICON).style.visibility =
-                'hidden';
-
-            this.adjustDimensions();
-            this.setSpeed();
+        document.querySelector('.' + Runner.classes.ICON).style.visibility = 'hidden';
+        
+        // Preload seahorse image
+        Runner.preloadCustomImages();
+        
+        this.adjustDimensions();
+        this.setSpeed();
 
             this.containerEl = document.createElement('div');
             this.containerEl.className = Runner.classes.CONTAINER;
@@ -1366,57 +1378,29 @@
              * Draw and crop based on size.
              */
             draw: function () {
-    if (this.typeConfig.type === 'CORAL') {
-        var coralImg = new Image();
-        coralImg.src = 'assets/coral.png';
-        var coralWidth = 34;
-        var coralHeight = 70;
-        var coralY = this.yPos;
-        
-        for (var i = 0; i < this.size; i++) {
-            var coralX = this.xPos + (i * coralWidth);
-            this.canvasCtx.drawImage(coralImg,
-                0, 0, coralWidth, coralHeight,
-                coralX, coralY,
-                coralWidth, coralHeight
-            );
-        }
-    } else if (this.typeConfig.type === 'FISHY') {
-        var fishImg = new Image();
-        fishImg.src = 'assets/fish.png';
-        var fishWidth = 46;
-        var fishHeight = 40;
-        var fishY = this.yPos;
-        var frameOffset = this.currentFrame * fishWidth;
-        
-        this.canvasCtx.drawImage(fishImg,
-            frameOffset, 0, fishWidth, fishHeight,
-            this.xPos, fishY,
-            fishWidth, fishHeight
-        );
-    } else {
-        var sourceWidth = this.typeConfig.width;
-        var sourceHeight = this.typeConfig.height;
+                var sourceWidth = this.typeConfig.width;
+                var sourceHeight = this.typeConfig.height;
 
-        if (IS_HIDPI) {
-            sourceWidth = sourceWidth * 2;
-            sourceHeight = sourceHeight * 2;
-        }
+                if (IS_HIDPI) {
+                    sourceWidth = sourceWidth * 2;
+                    sourceHeight = sourceHeight * 2;
+                }
 
-        var sourceX = (sourceWidth * this.size) * (0.5 * (this.size - 1)) +
-            this.spritePos.x;
+                // X position in sprite.
+                var sourceX = (sourceWidth * this.size) * (0.5 * (this.size - 1)) +
+                    this.spritePos.x;
 
-        if (this.currentFrame > 0) {
-            sourceX += sourceWidth * this.currentFrame;
-        }
+                // Animation frames.
+                if (this.currentFrame > 0) {
+                    sourceX += sourceWidth * this.currentFrame;
+                }
 
-        this.canvasCtx.drawImage(Runner.imageSprite,
-            sourceX, this.spritePos.y,
-            sourceWidth * this.size, sourceHeight,
-            this.xPos, this.yPos,
-            this.typeConfig.width * this.size, this.typeConfig.height);
-    }
-},
+                this.canvasCtx.drawImage(Runner.imageSprite,
+                    sourceX, this.spritePos.y,
+                    sourceWidth * this.size, sourceHeight,
+                    this.xPos, this.yPos,
+                    this.typeConfig.width * this.size, this.typeConfig.height);
+            },
 
             /**
              * Obstacle frame update.
@@ -1493,37 +1477,56 @@
      * speedOffset: speed faster / slower than the horizon.
      * minSpeed: Minimum speed which the obstacle can make an appearance.
      */
-   Obstacle.types = [
-    {
-        type: 'CORAL',           
-        width: 34,               
-        height: 70,              
-        yPos: 90,                
-        multipleSpeed: 4,        
-        minGap: 120,             
-        minSpeed: 0,             
-        collisionBoxes: [
-            new CollisionBox(5, 10, 24, 60)  
-        ]
-    },
-
-    {
-        type: 'FISHY',            
-        width: 46,               
-        height: 40,              
-        yPos: [100, 75, 50],     
-        yPosMobile: [100, 50],
-        multipleSpeed: 999,      
-        minSpeed: 8.5,           
-        minGap: 150,             
-        collisionBoxes: [
-            new CollisionBox(10, 10, 26, 20)  
-        ],
-        numFrames: 2,            
-        frameRate: 1000 / 6,
-        speedOffset: .8
-    }
-];
+    Obstacle.types = [
+        {
+            type: 'CACTUS_SMALL',
+            width: 17,
+            height: 35,
+            yPos: 105,
+            multipleSpeed: 4,
+            minGap: 120,
+            minSpeed: 0,
+            collisionBoxes: [
+                new CollisionBox(0, 7, 5, 27),
+                new CollisionBox(4, 0, 6, 34),
+                new CollisionBox(10, 4, 7, 14)
+            ]
+        },
+        {
+            type: 'CACTUS_LARGE',
+            width: 25,
+            height: 50,
+            yPos: 90,
+            multipleSpeed: 7,
+            minGap: 120,
+            minSpeed: 0,
+            collisionBoxes: [
+                new CollisionBox(0, 12, 7, 38),
+                new CollisionBox(8, 0, 7, 49),
+                new CollisionBox(13, 10, 10, 38)
+            ]
+        },
+        {
+            type: 'PTERODACTYL',
+            width: 46,
+            height: 40,
+            yPos: [100, 75, 50], // Variable height.
+            yPosMobile: [100, 50], // Variable height mobile.
+            multipleSpeed: 999,
+            minSpeed: 8.5,
+            minGap: 150,
+            collisionBoxes: [
+                new CollisionBox(15, 15, 16, 5),
+                new CollisionBox(18, 21, 24, 6),
+                new CollisionBox(2, 14, 4, 3),
+                new CollisionBox(6, 10, 4, 7),
+                new CollisionBox(10, 8, 6, 9)
+            ],
+            numFrames: 2,
+            frameRate: 1000 / 6,
+            speedOffset: .8
+        }
+    ];
 
 
     //******************************************************************************
@@ -1727,23 +1730,68 @@
          * @param {number} x
          * @param {number} y
          */
+draw: function (x, y) {
+    // Use cached seahorse image or load it
+    var seahorseImg = Runner.imageCache.seahorse;
+    
+    // If image not loaded yet, draw original trex as fallback
+    if (!seahorseImg || !seahorseImg.complete) {
+        var sourceX = x;
+        var sourceY = y;
+        var sourceWidth = this.ducking && this.status != Trex.status.CRASHED ?
+            this.config.WIDTH_DUCK : this.config.WIDTH;
+        var sourceHeight = this.config.HEIGHT;
 
-    draw: function (x, y) {
-    // Create seahorse image
-    var seahorseImg = new Image();
-    seahorseImg.src = 'assets/seahorse.png'; // Update path to your assets folder
+        if (IS_HIDPI) {
+            sourceX *= 2;
+            sourceY *= 2;
+            sourceWidth *= 2;
+            sourceHeight *= 2;
+        }
+
+        sourceX += this.spritePos.x;
+        sourceY += this.spritePos.y;
+
+        if (this.ducking && this.status != Trex.status.CRASHED) {
+            this.canvasCtx.drawImage(Runner.imageSprite, sourceX, sourceY,
+                sourceWidth, sourceHeight,
+                this.xPos, this.yPos,
+                this.config.WIDTH_DUCK, this.config.HEIGHT);
+        } else {
+            if (this.ducking && this.status == Trex.status.CRASHED) {
+                this.xPos++;
+            }
+            this.canvasCtx.drawImage(Runner.imageSprite, sourceX, sourceY,
+                sourceWidth, sourceHeight,
+                this.xPos, this.yPos,
+                this.config.WIDTH, this.config.HEIGHT);
+        }
+        return;
+    }
     
-    // Draw seahorse instead of trex
-    // Adjust y position (-20) to make seahorse sit at same level as trex
-    var seahorseY = this.yPos - 20;
+    // Draw seahorse
+    // Adjust position to match original trex dimensions
+    var drawWidth = 44;
+    var drawHeight = 47;
+    var drawX = this.xPos;
+    var drawY = this.yPos;
     
-    // Adjust y position slightly for better alignment
-    var seahorseX = this.xPos - 22;
+    // Adjust for ducking
+    if (this.ducking && this.status != Trex.status.CRASHED) {
+        drawHeight = 25;
+        drawWidth = 59;
+        drawY += 22; // Lower position for ducking
+    }
+    
+    // Adjust for crashing while ducking
+    if (this.ducking && this.status == Trex.status.CRASHED) {
+        drawX++;
+    }
     
     this.canvasCtx.drawImage(seahorseImg,
-        0, 0, 88, 94, // Use full seahorse image
-        seahorseX, seahorseY,
-        88, 94 // New dimensions
+        0, 0, 88, 94, // Source: full seahorse image
+        drawX - 22, drawY - 20, // Position adjustment
+        88, 94 // Keep original seahorse size
     );
 },
 
