@@ -33,7 +33,7 @@ const iSurvivedParagraph3 = "Josh snatched the basketball from the air and sprin
 // const iSurvivedParagraph5 = "This is the fifth paragraph of the book.";
 const allISurvivedParagraphs = [iSurvivedParagraph1,iSurvivedParagraph2,iSurvivedParagraph3];
 
-let numOfParagraphs = 5;
+let numOfParagraphs = 3;
 
 let selectedNumOfParagraphs = 0;
 
@@ -41,7 +41,7 @@ let finishedParagraphs = -1;
 
 let currentQuestion = -1;
 
-let randomList = [0, 1, 2];
+// let randomList = [0, 1, 2];
 
 let correctAnswers = 0;
 
@@ -117,18 +117,68 @@ function increment(){
 function incrementQuestion(){
     currentQuestion+=1;
     if(currentQuestion<=2){
-    document.getElementById("question").innerText = allISurvivedQuestions[randomList[currentQuestion]];
-    document.getElementById("labelForOption1").textContent = allISurvivedAnswers[randomList[currentQuestion]][0];
-    document.getElementById("labelForOption2").textContent = allISurvivedAnswers[randomList[currentQuestion]][1];
-    document.getElementById("labelForOption3").textContent = allISurvivedAnswers[randomList[currentQuestion]][2];
+    if(currentQuestion == 0){
+        document.getElementById("question").innerText = allISurvivedQuestions[currentQuestion];
+        document.getElementById("labelForOption1").textContent = allISurvivedAnswers[0];
+        // console.log(allISurvivedAnswers[currentQuestion])
+        // console.log(allISurvivedAnswers[currentQuestion][0]);
+        // console.log(allISurvivedAnswers[currentQuestion][1]);
+        // console.log(allISurvivedAnswers[currentQuestion][2]);
+        // console.log(currentQuestion);
+        document.getElementById("labelForOption2").textContent = allISurvivedAnswers[1];
+        document.getElementById("labelForOption3").textContent = allISurvivedAnswers[2];
+    }
+    else if(currentQuestion == 1){
+        document.getElementById("question").innerText = allISurvivedQuestions[currentQuestion];
+        document.getElementById("labelForOption1").textContent = allISurvivedAnswers[3];
+        document.getElementById("labelForOption2").textContent = allISurvivedAnswers[4];
+        document.getElementById("labelForOption3").textContent = allISurvivedAnswers[5];
+    }
+    else if(currentQuestion == 2){
+        document.getElementById("question").innerText = allISurvivedQuestions[currentQuestion];
+        document.getElementById("labelForOption1").textContent = allISurvivedAnswers[6];
+        document.getElementById("labelForOption2").textContent = allISurvivedAnswers[7];
+        document.getElementById("labelForOption3").textContent = allISurvivedAnswers[8];
+    }
     }
     else{
+        // console.log("else"+currentQuestion);
         showNumOfCorrectAnswers();
     }
 }
 
+
+// function showRightOrWrong(){
+//     if(document.getElementById("option1").checked && (document.getElementById("labelForOption1").textContent == iSurvivedAnswersParagraph1Q1Correct ||
+//     document.getElementById("labelForOption1").textContent == iSurvivedAnswersParagraph1Q2Correct ||
+//     document.getElementById("labelForOption1").textContent == iSurvivedAnswersParagraph2Q1Correct ||
+//     document.getElementById("labelForOption1").textContent == iSurvivedAnswersParagraph2Q2Correct ||
+//     document.getElementById("labelForOption1").textContent == iSurvivedAnswersParagraph3Q1Correct ||
+//     document.getElementById("labelForOption1").textContent == iSurvivedAnswersParagraph3Q2Correct)){
+//         correctAnswers +=1;
+//     }
+//     else if(document.getElementById("option2").checked && (document.getElementById("labelForOption2").textContent == iSurvivedAnswersParagraph1Q1Correct ||
+//     document.getElementById("labelForOption2").textContent == iSurvivedAnswersParagraph1Q2Correct ||
+//     document.getElementById("labelForOption2").textContent == iSurvivedAnswersParagraph2Q1Correct ||
+//     document.getElementById("labelForOption2").textContent == iSurvivedAnswersParagraph2Q2Correct ||
+//     document.getElementById("labelForOption2").textContent == iSurvivedAnswersParagraph3Q1Correct ||
+//     document.getElementById("labelForOption2").textContent == iSurvivedAnswersParagraph3Q2Correct)){
+//         correctAnswers +=1;
+//     }
+//     else if(document.getElementById("option3").checked && (document.getElementById("labelForOption3").textContent == iSurvivedAnswersParagraph1Q1Correct ||
+//     document.getElementById("labelForOption3").textContent == iSurvivedAnswersParagraph1Q2Correct ||
+//     document.getElementById("labelForOption3").textContent == iSurvivedAnswersParagraph2Q1Correct ||
+//     document.getElementById("labelForOption3").textContent == iSurvivedAnswersParagraph2Q2Correct ||
+//     document.getElementById("labelForOption3").textContent == iSurvivedAnswersParagraph3Q1Correct ||
+//     document.getElementById("labelForOption3").textContent == iSurvivedAnswersParagraph3Q2Correct)){
+//         correctAnswers +=1;
+//     }
+
+//     incrementQuestion();
+// }
+
 function showNumOfCorrectAnswers(){
-    document.getElementById("questionsContainer").classList.add("hidden");
+    // document.getElementById("questionsContainer").classList.add("hidden");
     document.getElementById("questionsCorrectHeader").classList.remove("hidden");
     document.getElementById("questionsCorrect").classList.remove("hidden");
     document.getElementById("questionsCorrect").innerText = "You got "+ correctAnswers+" out of 3 questions correct!";
@@ -151,19 +201,19 @@ function startQuiz(){
     document.getElementById("question").classList.remove("hidden");
     document.getElementById("questions").classList.remove("hidden");
     document.getElementById("submitButton").classList.remove("hidden");
-    if(selectedNumOfParagraphs==3){
-        for(let i=0; i<3; i++){
-            randomList[i] = Math.floor(Math.random()*(5-0+1));
-        }
+    // for(let i=0; i<3; i++){
+    //         randomList[i] = Math.floor(Math.random()*(selectedNumOfParagraphs));
+    // }
+    // if(selectedNumOfParagraphs==3){
         allISurvivedQuestions = [...iSurvivedQuestionsParagraph1,...iSurvivedQuestionsParagraph2,...iSurvivedQuestionsParagraph3];
         allISurvivedAnswers = [...iSurvivedAnswersParagraph1Q1,...iSurvivedAnswersParagraph1Q2,...iSurvivedAnswersParagraph2Q1,...iSurvivedAnswersParagraph2Q2,...iSurvivedAnswersParagraph3Q1,...iSurvivedAnswersParagraph3Q2];
 
-    }
-    else{
-        for(let i=0; i<3; i++){
-            randomList[i] = Math.floor(Math.random()*(3-0+1));
-        }
-    }
+    // }
+    // else{
+    //     for(let i=0; i<3; i++){
+    //         randomList[i] = Math.floor(Math.random()*(3-0+1));
+    //     }
+    // }
     incrementQuestion();
 }
 
