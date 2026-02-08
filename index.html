@@ -5,33 +5,37 @@
 </head>
 <body>
     <!-- intro page components -->
+     <div class = "container">
     <h1 id = "introHeading"></h1>
     <h2 id = "introHeading2"></h2>
-    <div class="centered">
+    <!-- <div class="centered"> -->
         <button id = "introButton" onclick="promptParagraphNum()">I Survived: The California Wildfires</button>
-    </div>
+    <!-- </div> -->
 
     <!-- number of paragraphs selection page components -->
     <h2 id = "numParagraphsHeading2" class = "hidden"></h2>
     <textarea id = "numParagraphsText" class = "hidden"></textarea>
-    <div class = "centered"></div>
+    <!-- <div class = "centered"></div> -->
         <button id = "numParagraphsButton" class = "hidden" onclick="readInput()">Submit</button>
     </div>
-
+</div>
     <!-- paragraphs page components -->
+     
     <p id = "mainParagraph" class = "hidden"></p>
-    <div class = "centered"></div>
+    <div class = "container">
+    <!-- <div class = "centered"></div> -->
         <button id = "nextButton" class = "hidden" onclick="increment()">Next</button>
         <button id = "finishButton" class = "hidden" onclick="startQuiz()">Finish</button>
     </div>
-
+</div>
     <h2 id= "question" class = "hidden"></h2>
     <form id = "questions" class = "hidden">
         <input type="radio" name="choice" value="Option 1"> Option 1
         <input type="radio" name="choice" value="Option 2"> Option 2
         <input type="radio" name="choice" value="Option 3"> Option 3
-        <input type="radio" name="choice" value="Option 4"> Option 4
+        <!-- <input type="radio" name="choice" value="Option 4"> Option 4 -->
     </form>
+<div class="container">
 <button id = "submitButton" class = "hidden" onclick="incrementQuestion()">Submit Answer</button>
 
     <script src = "index.js"></script>

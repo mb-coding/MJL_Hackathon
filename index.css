@@ -54,7 +54,12 @@
     border-color:#eba27d;
     cursor: pointer;
 }
-
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 #mainParagraph {
     text-align: center;
     font-size: 4vh;
@@ -84,3 +89,15 @@
 body {
     background-color: 	#dac99d;
     }
+#submitButton {
+    width: 150px;
+    height: 50px;
+    background-color: #f9c1c0;
+    border-color:#eba27d;
+    cursor: pointer;
+}
+#question {
+    text-align: center;
+    font-size: 4vh;
+    color: 	#240702;
+}

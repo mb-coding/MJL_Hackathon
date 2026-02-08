@@ -1,19 +1,22 @@
 // lists of questions
 let iSurvivedQuestionsParagraph1 = ["Who was Josh navigating the wildfire with?", "What did the glowing embers and chunks of flaming wood feel like to Josh?"];
 let iSurvivedQuestionsParagraph2 = ["What happened to the tree?", "Where was the tree branch heading?"];
-let iSurvivedQuestionsParagraph3 = ["Where did Josh’s dad work?", "How long did Josh wait for his mom?"];
+let iSurvivedQuestionsParagraph3 = ["Where did Josh`s dad work?", "How long did Josh wait for his mom?"];
 // let iSurvivedQuestionsParagraph4 = ["question 1", "question 2", "question 3", "question 4"];
 // let iSurvivedQuestionsParagraph5 = ["question 1", "question 2", "question 3", "question 4"];
 // let allISurvivedQuestions = [...iSurvivedQuestionsParagraph1,...iSurvivedQuestionsParagraph2,...iSurvivedQuestionsParagraph3]
 let allISurvivedQuestions = [...iSurvivedQuestionsParagraph1,...iSurvivedQuestionsParagraph2]
 
 // lists of answers
-let iSurvivedAnswersParagraph1 = ["Cousin Holly", "Greg", "Josh`s Mom"];
-let iSurvivedAnswersParagraph2 = ["A flesh eating monster", "A sharped tooth shark", "the claws of a bear"];
-let iSurvivedAnswersParagraph3 = ["It exploded", "It flew away", "Someone crashed into it"]
+let iSurvivedAnswersParagraph1Q1 = ["Cousin Holly", "Greg", "Josh`s Mom"];
+let iSurvivedAnswersParagraph1Q2 = ["A flesh eating monster", "A sharped tooth shark", "the claws of a bear"];
+let iSurvivedAnswersParagraph2Q1 = ["It exploded", "It flew away", "Someone crashed into it"];
+let iSurvivedAnswersParagraph2Q2 = ["For Josh`s skull", "For Holly`s skull", "For a building"];
+let iSurvivedAnswersParagraph3Q1 = ["A big New York City bank", "The NBA", "The Airport"];
+let iSurvivedAnswersParagraph3Q2 = ["Ten minutes", "Five minutes", "Sixty minutes"];
 // let iSurvivedAnswersParagraph4 = ["answer 1", "answer 2", "answer 3", "answer 4"];
 // let iSurvivedAnswersParagraph5 = ["answer 1", "answer 2", "answer 3", "answer 4"];
-let allISurvivedAnswers = [...iSurvivedAnswersParagraph1,...iSurvivedAnswersParagraph2,...iSurvivedAnswersParagraph3];
+let allISurvivedAnswers = [...iSurvivedAnswersParagraph1Q1,...iSurvivedAnswersParagraph1Q2,...iSurvivedAnswersParagraph2Q1,...iSurvivedAnswersParagraph2Q2];
 
 
 // lists of paragraphs
@@ -31,8 +34,6 @@ let selectedNumOfParagraphs = 0;
 let finishedParagraphs = -1;
 
 let currentQuestion = -1;
-
-let randomList = [0, 1, 2];
 
 // function to clear the screen of all html elements
 function clearIntroScreen(){
@@ -105,9 +106,7 @@ function increment(){
 
 function incrementQuestion(){
     currentQuestion+=1;
-    if(currentQuestion<=3){
-        document.getElementById("question").innerText = allISurvivedQuestions[randomList[currentQuestion]];
-    }
+    document.getElementById("question").innerText = allISurvivedQuestions[currentQuestion];
 }
 
 // function to begin quiz
@@ -118,15 +117,7 @@ function startQuiz(){
     document.getElementById("questions").classList.remove("hidden");
     document.getElementById("submitButton").classList.remove("hidden");
     if(selectedNumOfParagraphs==3){
-        for(let i=0; i<3;i++){
-            randomList[i] = Math.floor(Math.random()*(5-0+1));
-        }
         allISurvivedQuestions = [...iSurvivedQuestionsParagraph1,...iSurvivedQuestionsParagraph2,...iSurvivedQuestionsParagraph3]
-    }
-    else{
-        for(let i=0; i<3;i++){
-            randomList[i] = Math.floor(Math.random()*(3-0+1));
-        }
     }
     incrementQuestion();
 }
@@ -135,3 +126,5 @@ function startQuiz(){
 // start of program
 document.getElementById("introHeading").innerText = "Welcome to the reading app!";
 document.getElementById("introHeading2").innerText = "What book would you like to read today?";
+
+// new page to indicate questions starting 
