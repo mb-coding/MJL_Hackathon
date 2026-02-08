@@ -72,6 +72,16 @@
         }
     }
     window['Runner'] = Runner;
+    // Global image cache
+    Runner.imageCache = {
+        seahorse: null
+    };
+    
+    // Preload function
+    Runner.preloadCustomImages = function() {
+        Runner.imageCache.seahorse = new Image();
+        Runner.imageCache.seahorse.src = 'assets/seahorse.png';
+};
 
 
     /**
@@ -352,11 +362,13 @@
          */
         init: function () {
             // Hide the static icon.
-            document.querySelector('.' + Runner.classes.ICON).style.visibility =
-                'hidden';
-
-            this.adjustDimensions();
-            this.setSpeed();
+        document.querySelector('.' + Runner.classes.ICON).style.visibility = 'hidden';
+        
+        // Preload seahorse image
+        Runner.preloadCustomImages();
+        
+        this.adjustDimensions();
+        this.setSpeed();
 
             this.containerEl = document.createElement('div');
             this.containerEl.className = Runner.classes.CONTAINER;
@@ -1718,42 +1730,70 @@
          * @param {number} x
          * @param {number} y
          */
-        draw: function (x, y) {
-            var sourceX = x;
-            var sourceY = y;
-            var sourceWidth = this.ducking && this.status != Trex.status.CRASHED ?
-                this.config.WIDTH_DUCK : this.config.WIDTH;
-            var sourceHeight = this.config.HEIGHT;
+draw: function (x, y) {
+    // Use cached seahorse image or load it
+    var seahorseImg = Runner.imageCache.seahorse;
+    
+    // If image not loaded yet, draw original trex as fallback
+    if (!seahorseImg || !seahorseImg.complete) {
+        var sourceX = x;
+        var sourceY = y;
+        var sourceWidth = this.ducking && this.status != Trex.status.CRASHED ?
+            this.config.WIDTH_DUCK : this.config.WIDTH;
+        var sourceHeight = this.config.HEIGHT;
 
-            if (IS_HIDPI) {
-                sourceX *= 2;
-                sourceY *= 2;
-                sourceWidth *= 2;
-                sourceHeight *= 2;
+        if (IS_HIDPI) {
+            sourceX *= 2;
+            sourceY *= 2;
+            sourceWidth *= 2;
+            sourceHeight *= 2;
+        }
+
+        sourceX += this.spritePos.x;
+        sourceY += this.spritePos.y;
+
+        if (this.ducking && this.status != Trex.status.CRASHED) {
+            this.canvasCtx.drawImage(Runner.imageSprite, sourceX, sourceY,
+                sourceWidth, sourceHeight,
+                this.xPos, this.yPos,
+                this.config.WIDTH_DUCK, this.config.HEIGHT);
+        } else {
+            if (this.ducking && this.status == Trex.status.CRASHED) {
+                this.xPos++;
             }
-
-            // Adjustments for sprite sheet position.
-            sourceX += this.spritePos.x;
-            sourceY += this.spritePos.y;
-
-            // Ducking.
-            if (this.ducking && this.status != Trex.status.CRASHED) {
-                this.canvasCtx.drawImage(Runner.imageSprite, sourceX, sourceY,
-                    sourceWidth, sourceHeight,
-                    this.xPos, this.yPos,
-                    this.config.WIDTH_DUCK, this.config.HEIGHT);
-            } else {
-                // Crashed whilst ducking. Trex is standing up so needs adjustment.
-                if (this.ducking && this.status == Trex.status.CRASHED) {
-                    this.xPos++;
-                }
-                // Standing / running
-                this.canvasCtx.drawImage(Runner.imageSprite, sourceX, sourceY,
-                    sourceWidth, sourceHeight,
-                    this.xPos, this.yPos,
-                    this.config.WIDTH, this.config.HEIGHT);
-            }
-        },
+            this.canvasCtx.drawImage(Runner.imageSprite, sourceX, sourceY,
+                sourceWidth, sourceHeight,
+                this.xPos, this.yPos,
+                this.config.WIDTH, this.config.HEIGHT);
+        }
+        return;
+    }
+    
+    // Draw seahorse
+    // Adjust position to match original trex dimensions
+    var drawWidth = 44;
+    var drawHeight = 47;
+    var drawX = this.xPos;
+    var drawY = this.yPos;
+    
+    // Adjust for ducking
+    if (this.ducking && this.status != Trex.status.CRASHED) {
+        drawHeight = 25;
+        drawWidth = 59;
+        drawY += 22; // Lower position for ducking
+    }
+    
+    // Adjust for crashing while ducking
+    if (this.ducking && this.status == Trex.status.CRASHED) {
+        drawX++;
+    }
+    
+    this.canvasCtx.drawImage(seahorseImg,
+        0, 0, 88, 94, // Source: full seahorse image
+        drawX - 22, drawY - 20, // Position adjustment
+        88, 94 // Keep original seahorse size
+    );
+},
 
         /**
          * Sets a random time for the blink to happen.
