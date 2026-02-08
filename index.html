@@ -4,10 +4,18 @@
     <link rel = "stylesheet" href="index.css">
 </head>
 <body>
+    <!-- intro page components -->
     <h1 id = "introHeading"></h1>
     <h2 id = "introHeading2"></h2>
-    <p id = "mainParagraph"></p>
     <button id = "introButton" onclick="showParagraphs()">I Survived</button>
+
+    <h2 id = "numParagraphsHeading2" class = "hidden"></h2>
+    <button id = "numParagraphsButton" class = "hidden" onclick="readInput()">Submit</button>
+    <textarea id = "numParagraphsText" class = "hidden"></textarea>
+
+    
+    <p id = "mainParagraph"></p>
+
     <script src = "index.js"></script>
 </body>
 </html>

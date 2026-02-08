@@ -21,15 +21,20 @@ const iSurvivedParagraph5 = "This is the fifth paragraph of the book.";
 
 // function to clear the screen of all html elements
 function clearIntroScreen(){
-    document.getElementById("introHeading").innerHTML = "";
-    document.getElementById("introHeading2").innerHTML = "";
-    document.getElementById("introButton").remove();
+    document.getElementById("introHeading").classList.add("hidden");
+    document.getElementById("introHeading2").classList.add("hidden");
+    document.getElementById("introButton").classList.add("hidden");
 }
 
 // function to show text after book is selected
 function showParagraphs(){
-    clearIntroScreen()
+    clearIntroScreen();
+    document.getElementById("numParagraphsHeading2").classList.remove("hidden");
+    document.getElementById("numParagraphsButton").classList.remove("hidden");
+    document.getElementById("numParagraphsText").classList.remove("hidden");
+    document.getElementById("numParagraphsHeading2").innerText = "How many paragraphs would you like to read?";
 }
+
 
 // start of program
 document.getElementById("introHeading").innerText = "Welcome to the reading app!";
