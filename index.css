@@ -1,3 +1,13 @@
+.hidden{
+    display: none;
+}
+
+.centered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #introHeading {
     text-align: center;
     font-size: 10vh;
@@ -8,11 +18,6 @@
     text-align: center;
 }
 
-#mainParagraph {
-    text-align: center;
-}
-
-
 #introButton {
     width: 200px;
     height: 50px;
@@ -21,6 +26,21 @@
     /* align-items: center; */
 }
 
-.hidden{
-    display: none;
+#numParagraphsHeading2 {
+    text-align: center;
+}
+
+#numParagraphsText {
+    text-align: center;
+}
+
+#numParagraphsButton {
+    width: 200px;
+    height: 50px;
+    background-color: yellow;
+}
+
+
+#mainParagraph {
+    text-align: center;
 }

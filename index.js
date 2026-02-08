@@ -19,6 +19,8 @@ const iSurvivedParagraph3 = "This is the third paragraph of the book.";
 const iSurvivedParagraph4 = "This is the fourth paragraph of the book.";
 const iSurvivedParagraph5 = "This is the fifth paragraph of the book.";
 
+let numOfParagraphs = 5;
+
 // function to clear the screen of all html elements
 function clearIntroScreen(){
     document.getElementById("introHeading").classList.add("hidden");
@@ -27,7 +29,7 @@ function clearIntroScreen(){
 }
 
 // function to show text after book is selected
-function showParagraphs(){
+function promptParagraphNum(){
     clearIntroScreen();
     document.getElementById("numParagraphsHeading2").classList.remove("hidden");
     document.getElementById("numParagraphsButton").classList.remove("hidden");
@@ -35,6 +37,21 @@ function showParagraphs(){
     document.getElementById("numParagraphsHeading2").innerText = "How many paragraphs would you like to read?";
 }
 
+function readInput(){
+    console.log(document.getElementById("numParagraphsText").value);
+    let text = document.getElementById("numParagraphsText").value
+    // change these values if the number of paragraphs change
+    if (text=="2" || text == "3" || text == "4" || text == "5") {
+        showParagraphs();
+    }
+    else {
+        alert("Please enter a valid input between 2 and "+numOfParagraphs+" paragraphs!");
+    }
+}
+
+function showParagraphs(){
+    
+}
 
 // start of program
 document.getElementById("introHeading").innerText = "Welcome to the reading app!";

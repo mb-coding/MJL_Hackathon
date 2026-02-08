@@ -7,12 +7,14 @@
     <!-- intro page components -->
     <h1 id = "introHeading"></h1>
     <h2 id = "introHeading2"></h2>
-    <button id = "introButton" onclick="showParagraphs()">I Survived</button>
-
+    <div class="centered">
+        <button id = "introButton" onclick="promptParagraphNum()">I Survived</button>
+    </div>
     <h2 id = "numParagraphsHeading2" class = "hidden"></h2>
-    <button id = "numParagraphsButton" class = "hidden" onclick="readInput()">Submit</button>
     <textarea id = "numParagraphsText" class = "hidden"></textarea>
-
+    <div class = "centered"></div>
+        <button id = "numParagraphsButton" class = "hidden" onclick="readInput()">Submit</button>
+    </div>
     
     <p id = "mainParagraph"></p>
 
