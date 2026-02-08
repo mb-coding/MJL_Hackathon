@@ -40,7 +40,12 @@
     background-color: yellow;
 }
 
-
 #mainParagraph {
     text-align: center;
+}
+
+#nextButton {
+    width: 200px;
+    height: 50px;
+    background-color: yellow;
 }

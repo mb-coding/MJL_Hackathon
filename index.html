@@ -10,13 +10,19 @@
     <div class="centered">
         <button id = "introButton" onclick="promptParagraphNum()">I Survived</button>
     </div>
+
+    <!-- number of paragraphs selection page components -->
     <h2 id = "numParagraphsHeading2" class = "hidden"></h2>
     <textarea id = "numParagraphsText" class = "hidden"></textarea>
     <div class = "centered"></div>
         <button id = "numParagraphsButton" class = "hidden" onclick="readInput()">Submit</button>
     </div>
-    
-    <p id = "mainParagraph"></p>
+
+    <!-- paragraphs page components -->
+    <p id = "mainParagraph" class = "hidden"></p>
+    <div class = "centered"></div>
+        <button id = "nextButton" class = "hidden" onclick="increment()">Next</button>
+    </div>
 
     <script src = "index.js"></script>
 </body>
