@@ -111,8 +111,15 @@ function incrementQuestion(){
     document.getElementById("question").innerText = allISurvivedQuestions[randomList[currentQuestion]];
 }
 
+function showReminder() {
+    document.getElementById("finishButton").classList.add("hidden");
+    document.getElementById("mainParagraph").classList.add("hidden");
+    document.getElementById("startQuiz").classList.remove("hidden");
+}
+
 // function to begin quiz
 function startQuiz(){
+    document.getElementById("startQuiz").classList.add("hidden");
     document.getElementById("finishButton").classList.add("hidden");
     document.getElementById("mainParagraph").classList.add("hidden");
     document.getElementById("question").classList.remove("hidden");
