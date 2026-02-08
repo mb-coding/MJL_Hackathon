@@ -79,14 +79,22 @@ function setupToShowParagraphs(){
 
 function showParagraphs(updatedFinishedParagraphs){
     // console.log(selectedNumOfParagraphs);
-    if(updatedFinishedParagraphs <= selectedNumOfParagraphs){
+    if(updatedFinishedParagraphs < selectedNumOfParagraphs){
         document.getElementById("mainParagraph").innerText = allISurvivedParagraphs[updatedFinishedParagraphs];
+    }
+    if(updatedFinishedParagraphs == selectedNumOfParagraphs-1){
+        document.getElementById("nextButton").classList.add("hidden");
+        document.getElementById("finishButton").classList.remove("hidden");
     }
 }
 
 function increment(){
     finishedParagraphs+=1;
     showParagraphs(finishedParagraphs);
+}
+
+function startQuiz(){
+    
 }
 
 // start of program
