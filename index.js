@@ -131,6 +131,20 @@ function startQuiz(){
     incrementQuestion();
 }
 
+//Helper function meant to open a timed window with the game
+function openGameWindow(){
+    const url = 'game.html';
+
+    const gameWindow = window.open(url);
+
+    if (gameWindow){
+        gameWindow.focus();
+        setTimeout(gameWindow.close(), 5000);
+    } else {
+        alert('Error: could not load game :(');
+    }
+}
+
 // start of program
 document.getElementById("introHeading").innerText = "Welcome to the reading app!";
 document.getElementById("introHeading2").innerText = "What book would you like to read today?";
